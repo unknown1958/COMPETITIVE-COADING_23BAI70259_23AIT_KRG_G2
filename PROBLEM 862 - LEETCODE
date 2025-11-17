@@ -1,0 +1,26 @@
+class Solution {
+public:
+    int shortestSubarray(vector<int>& nums, int k) {
+        int n = nums.size();
+        int length = INT_MAX;
+
+        for (int i = 0; i < n; i++) {
+            int sum = 0;                
+            int check = 0;
+
+            for (int j = i; j < n; j++) {
+                sum = sum + nums[j];         
+                check++;                
+
+                if (sum >= k) {        
+                    if (check < length)
+                        length = check;
+                    break;              
+                }
+            }
+        }
+
+        if (length != INT_MAX) return length;
+        return -1;
+    }
+};
